@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-registration
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-registration
+  template:
+    metadata:
+      labels:
+        app: python-registration
+    spec:
+      containers:
+        - name: python-registration
+          image: python-registration:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
